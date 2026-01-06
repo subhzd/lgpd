@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="lgpd.png">
+    <link rel="apple-touch-icon" href="lgpd.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lei Geral de Proteção de Dados (LGPD) | Brazil">
+    <meta property="og:description" content="Official reference of the Brazilian LGPD (Law No. 13,709/2018) with simplified layman summaries. Access rights, penalties, and obligations.">
+    <meta property="og:image" content="lgpd_og.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LGPD - Lei Geral de Proteção de Dados | Brazil">
+    <meta name="twitter:description" content="Official reference of the Brazilian LGPD (Law No. 13,709/2018) with simplified layman summaries.">
+    <meta name="twitter:image" content="lgpd_og.png">
+
+    <title>LGPD - Lei Geral de Proteção de Dados | Brazil</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="lucide@latest"></script>
+    
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brazil: {
+                            green: '#009c3b',
+                            yellow: '#ffdf00',
+                            blue: '#002776',
+                            white: '#FFFFFF'
+                        },
+                        primary: '#002776', // Official Brazil Blue
+                        secondary: '#475569',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .official-font { font-family: 'Merriweather', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Official Header Style */
+        .official-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .dark .official-header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* Card Styles */
+        .official-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .dark .official-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+
+        .highlight {
+            background-color: #fef08a; /* Yellow-200 */
+            color: #000;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        .dark .highlight {
+            background-color: #ca8a04; /* Yellow-600 */
+            color: #fff;
+        }
+
+        /* Infographic Styles */
+        .info-card {
+            transition: transform 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-2px);
+        }
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #cbd5e1;
+            margin: 0 auto;
+        }
+        .dark .arrow-down {
+            border-top-color: #475569;
+        }
+
+        /* Collapsible transitions */
+        .chapter-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 3000px;
+            opacity: 1;
+            overflow: hidden;
+        }
+        .chapter-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        /* Hover Anchor Link */
+        .anchor-link {
+            opacity: 0;
+            transition: opacity 0.2s;
+            margin-left: 0.5rem;
+            color: #002776;
+            text-decoration: none;
+            font-size: 0.7em;
+            vertical-align: middle;
+        }
+        .dark .anchor-link { color: #60a5fa; }
+        h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
+
+        /* Scroll margin for sticky headers */
+        section, article, .chapter-header {
+            scroll-margin-top: 6rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-darker dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 official-header h-20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button id="menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                
+                <!-- Emblem & Title -->
+                <div class="flex items-center gap-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Coat_of_arms_of_Brazil.svg" alt="Coat of Arms of Brazil" class="h-14 w-auto object-contain transition-all">
+                    <div class="flex flex-col">
+                        <span class="text-[0.6rem] uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400">Government of Brazil</span>
+                        <span class="font-bold text-lg sm:text-xl tracking-tight leading-tight official-font text-brazil-blue dark:text-blue-300">LGPD</span>
+                        <span class="text-[0.55rem] font-semibold text-brazil-green dark:text-green-500 uppercase">Law No. 13,709/2018</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 max-w-md mx-4 lg:mx-8 hidden sm:block">
+                <div class="relative group">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-brazil-blue transition-colors"></i>
+                    <input type="text" id="search-input" placeholder="Search LGPD (e.g., 'fine', 'consent')..." 
+                        class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-brazil-blue focus:border-transparent transition-all outline-none placeholder:text-slate-400">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Download PDF Button -->
+                <a href="LGPD-english-version.pdf" download class="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-md bg-brazil-green/10 text-brazil-green dark:text-green-400 dark:bg-green-900/20 hover:bg-brazil-green hover:text-white dark:hover:bg-green-800 transition-all border border-brazil-green/20">
+                    <i data-lucide="download" class="w-3 h-3"></i>
+                    PDF
+                </a>
+
+                <!-- Mobile Search Icon -->
+                <button class="sm:hidden p-2 text-slate-600 dark:text-slate-300 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.getElementById('mobile-search-bar').classList.toggle('hidden')">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Simplified vs Official Toggle -->
+                <div class="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+                    <button id="btn-official" class="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200">Official</button>
+                    <button id="btn-simplified" class="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-brazil-green dark:text-green-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600">Simplified</button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center">
+                    <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar -->
+        <div id="mobile-search-bar" class="hidden sm:hidden px-4 pb-3 bg-white dark:bg-darker border-b border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+            <input type="text" id="search-input-mobile" placeholder="Search..." class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md py-2 px-4 text-sm outline-none">
+            <a href="LGPD-english-version.pdf" download class="flex justify-center items-center gap-2 w-full py-2 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 rounded-md">
+                <i data-lucide="download" class="w-3 h-3"></i> Download PDF
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 z-40 lg:hidden hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+
+    <div class="flex pt-20 min-h-screen max-w-7xl mx-auto">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:sticky top-20 left-0 h-[calc(100vh-5rem)] w-72 bg-white dark:bg-darker border-r border-slate-200 dark:border-slate-800 z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 overflow-y-auto pb-10 shadow-xl lg:shadow-none">
+            <div class="p-4">
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 px-2 border-b border-slate-100 dark:border-slate-800 pb-2">
+                    Chapters
+                </div>
+                <nav id="toc-container" class="space-y-1">
+                    <!-- JS Injected -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 min-w-0 px-4 sm:px-8 lg:px-10 py-8 pb-20">
+            
+            <!-- Official Header Section -->
+            <div class="mb-10 text-center border-b-2 border-slate-200 dark:border-slate-700 pb-8 animate-fade-in">
+                <h1 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+                    Lei Geral de Proteção de Dados
+                </h1>
+                <p class="text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
+                    Law No. 13,709 of August 14, 2018
+                </p>
+                <div id="header-intro">
+                    <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto serif italic leading-relaxed">
+                        "This Law provides on the processing of personal data, including by digital means, by a natural person or legal entity governed by public or private law, for the purpose of protecting the essential rights of freedom and privacy."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Summary Cards (Highlights) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                <!-- Card 1: Fine -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-brazil-green hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Max Penalty</span>
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-brazil-green"></i>
+                    </div>
+                    <div class="text-2xl font-bold text-slate-800 dark:text-white mb-1">R$ 50M</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Per infraction (or 2% of revenue) for data breaches.</p>
+                </div>
+
+                <!-- Card 2: Rights -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-brazil-yellow hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Your Rights</span>
+                        <i data-lucide="shield" class="w-4 h-4 text-yellow-600"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">Control</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Access, correct, anonymize, port, or delete your data.</p>
+                </div>
+
+                <!-- Card 3: Consent -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-brazil-blue hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Consent</span>
+                        <i data-lucide="check-circle" class="w-4 h-4 text-blue-700"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">Free</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Must be informed, unequivocal, and for a specific purpose.</p>
+                </div>
+
+                <!-- Card 4: Authority -->
+                <div class="official-card p-4 rounded-lg border-t-4 border-t-slate-600 hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Regulator</span>
+                        <i data-lucide="landmark" class="w-4 h-4 text-slate-600"></i>
+                    </div>
+                    <div class="text-xl font-bold text-slate-800 dark:text-white mb-1">ANPD</div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">National Data Protection Authority enforces the law.</p>
+                </div>
+            </div>
+
+            <!-- SIMPLIFIED INFOGRAPHIC (Image Based) -->
+            <div id="lgpd-infographic" class="hidden mb-16 animate-fade-in border-b-2 border-slate-100 dark:border-slate-800 pb-12">
+                <div class="text-center mb-10">
+                    <span class="bg-brazil-green/10 text-brazil-green dark:bg-green-900/30 dark:text-green-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-brazil-green/20">Simplified Guide</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 mt-4 official-font">How LGPD Works</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto text-sm">Visual summary of the Brazilian General Data Protection Law.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <!-- INLINE SVG CONTAINER -->
+                    <div class="w-full max-w-4xl h-auto rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 mb-6 overflow-hidden bg-slate-50">
+                        <svg id="lgpd-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 880" style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; width: 100%; height: auto; display: block;">
+                          <!-- Background -->
+                          <rect width="800" height="880" fill="#f8fafc"/>
+                          
+                          <!-- Header Section -->
+                          <rect width="800" height="100" fill="#002776"/>
+                          <rect y="95" width="800" height="5" fill="#ffdf00"/>
+                          <text x="400" y="50" text-anchor="middle" fill="white" font-size="32" font-weight="bold">LGPD</text>
+                          <text x="400" y="80" text-anchor="middle" fill="#e2e8f0" font-size="18">Lei Geral de Proteção de Dados - Simplified Guide</text>
+                          
+                          <!-- SECTION 1: THE PLAYERS -->
+                          <g transform="translate(0, 130)">
+                            <text x="400" y="0" text-anchor="middle" fill="#009c3b" font-size="24" font-weight="bold" text-transform="uppercase">1. The Main Players</text>
+                            
+                            <!-- Holder -->
+                            <g transform="translate(50, 40)">
+                              <!-- Updated Person Icon (Head and Shoulders) -->
+                              <circle cx="60" cy="60" r="40" fill="#e0f2fe" stroke="#002776" stroke-width="2"/>
+                              <circle cx="60" cy="50" r="14" fill="#002776"/>
+                              <path d="M40 85 C40 70 50 68 60 68 C70 68 80 70 80 85" stroke="#002776" stroke-width="4" stroke-linecap="round" fill="none"/>
+                              
+                              <!-- Adjusted Text Position -->
+                              <text x="60" y="125" text-anchor="middle" font-weight="bold" fill="#334155">HOLDER</text>
+                              <text x="60" y="140" text-anchor="middle" font-size="12" fill="#64748b">(You)</text>
+                            </g>
+
+                            <!-- Arrow 1 -->
+                            <path d="M140 100h40" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+                            <!-- Controller -->
+                            <g transform="translate(210, 40)">
+                              <rect x="0" y="20" width="120" height="80" rx="8" fill="#f0fdf4" stroke="#009c3b" stroke-width="2"/>
+                              <text x="60" y="55" text-anchor="middle" font-weight="bold" font-size="14" fill="#009c3b">CONTROLLER</text>
+                              <text x="60" y="75" text-anchor="middle" font-size="11" fill="#166534">Decides "Why" & "How"</text>
+                            </g>
+
+                            <!-- Arrow 2 -->
+                            <path d="M350 100h40" stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+                            <!-- Processor -->
+                            <g transform="translate(420, 40)">
+                              <rect x="0" y="20" width="120" height="80" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+                              <text x="60" y="55" text-anchor="middle" font-weight="bold" font-size="14" fill="#ca8a04">PROCESSOR</text>
+                              <text x="60" y="75" text-anchor="middle" font-size="11" fill="#854d0e">Processes Data</text>
+                            </g>
+
+                            <!-- DPO Bubble -->
+                            <g transform="translate(320, 150)">
+                              <rect x="0" y="0" width="140" height="40" rx="20" fill="#f1f5f9" stroke="#64748b" stroke-width="1"/>
+                              <text x="70" y="25" text-anchor="middle" font-size="12" font-weight="bold" fill="#475569">DPO (Encarregado)</text>
+                              <path d="M70 0v-20" stroke="#64748b" stroke-width="1" stroke-dasharray="4"/>
+                            </g>
+
+                            <!-- ANPD -->
+                            <g transform="translate(600, 30)">
+                              <path d="M60 20 L10 50 L110 50 Z" fill="#334155"/>
+                              <rect x="20" y="50" width="80" height="60" fill="#cbd5e1"/>
+                              <rect x="30" y="60" width="10" height="50" fill="white"/>
+                              <rect x="50" y="60" width="10" height="50" fill="white"/>
+                              <rect x="70" y="60" width="10" height="50" fill="white"/>
+                              <rect x="10" y="110" width="100" height="10" fill="#334155"/>
+                              <text x="60" y="140" text-anchor="middle" font-weight="bold" fill="#1e293b">ANPD</text>
+                              <text x="60" y="155" text-anchor="middle" font-size="10" fill="#64748b">Authority</text>
+                            </g>
+                          </g>
+
+                          <!-- Divider -->
+                          <line x1="100" y1="335" x2="700" y2="335" stroke="#e2e8f0" stroke-width="2"/>
+
+                          <!-- SECTION 2: LEGAL BASES -->
+                          <g transform="translate(0, 360)">
+                            <text x="400" y="0" text-anchor="middle" fill="#002776" font-size="24" font-weight="bold" text-transform="uppercase">2. When can data be used?</text>
+                            <text x="400" y="25" text-anchor="middle" fill="#64748b" font-size="14">There are 10 Legal Bases. Here are the Top 5:</text>
+
+                            <!-- Grid -->
+                            <g transform="translate(50, 60)">
+                              <!-- Consent -->
+                              <g>
+                                <rect width="130" height="100" rx="10" fill="#ecfdf5" stroke="#009c3b" stroke-width="2"/>
+                                <text x="65" y="40" text-anchor="middle" font-size="24">✅</text>
+                                <text x="65" y="70" text-anchor="middle" font-weight="bold" fill="#009c3b">Consent</text>
+                              </g>
+                              
+                              <!-- Contract -->
+                              <g transform="translate(145, 0)">
+                                <rect width="130" height="100" rx="10" fill="#eff6ff" stroke="#002776" stroke-width="2"/>
+                                <text x="65" y="40" text-anchor="middle" font-size="24">📝</text>
+                                <text x="65" y="70" text-anchor="middle" font-weight="bold" fill="#002776">Contract</text>
+                              </g>
+
+                              <!-- Legal Obligation -->
+                              <g transform="translate(290, 0)">
+                                <rect width="130" height="100" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+                                <text x="65" y="40" text-anchor="middle" font-size="24">⚖️</text>
+                                <text x="65" y="70" text-anchor="middle" font-weight="bold" fill="#d97706">Legal Duty</text>
+                              </g>
+
+                              <!-- Legitimate Interest -->
+                              <g transform="translate(435, 0)">
+                                <rect width="130" height="100" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+                                <text x="65" y="40" text-anchor="middle" font-size="24">💼</text>
+                                <text x="65" y="70" text-anchor="middle" font-weight="bold" fill="#475569">Legit Interest</text>
+                              </g>
+                              
+                              <!-- Life Protection -->
+                              <g transform="translate(580, 0)">
+                                <rect width="130" height="100" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+                                <text x="65" y="40" text-anchor="middle" font-size="24">❤️</text>
+                                <text x="65" y="70" text-anchor="middle" font-weight="bold" fill="#dc2626">Life Protection</text>
+                              </g>
+                            </g>
+                          </g>
+
+                          <!-- Divider -->
+                          <line x1="100" y1="540" x2="700" y2="540" stroke="#e2e8f0" stroke-width="2"/>
+
+                          <!-- SECTION 3: YOUR RIGHTS -->
+                          <g transform="translate(0, 560)">
+                            <text x="400" y="0" text-anchor="middle" fill="#ca8a04" font-size="24" font-weight="bold" text-transform="uppercase">3. Your Rights (Art. 18)</text>
+
+                            <g transform="translate(100, 35)">
+                              <!-- Right 1 -->
+                              <g transform="translate(0, 0)">
+                                <circle cx="30" cy="30" r="30" fill="#dbeafe"/>
+                                <text x="30" y="38" text-anchor="middle" font-size="20">👁️</text>
+                                <text x="80" y="25" font-weight="bold" fill="#1e293b" font-size="18">Access</text>
+                                <text x="80" y="45" fill="#64748b" font-size="14">See your data</text>
+                              </g>
+
+                              <!-- Right 2 -->
+                              <g transform="translate(350, 0)">
+                                <circle cx="30" cy="30" r="30" fill="#dcfce7"/>
+                                <text x="30" y="38" text-anchor="middle" font-size="20">✏️</text>
+                                <text x="80" y="25" font-weight="bold" fill="#1e293b" font-size="18">Correction</text>
+                                <text x="80" y="45" fill="#64748b" font-size="14">Fix errors</text>
+                              </g>
+
+                              <!-- Right 3 -->
+                              <g transform="translate(0, 80)">
+                                <circle cx="30" cy="30" r="30" fill="#fee2e2"/>
+                                <text x="30" y="38" text-anchor="middle" font-size="20">🗑️</text>
+                                <text x="80" y="25" font-weight="bold" fill="#1e293b" font-size="18">Deletion</text>
+                                <text x="80" y="45" fill="#64748b" font-size="14">Remove data</text>
+                              </g>
+
+                              <!-- Right 4 -->
+                              <g transform="translate(350, 80)">
+                                <circle cx="30" cy="30" r="30" fill="#fef9c3"/>
+                                <text x="30" y="38" text-anchor="middle" font-size="20">📦</text>
+                                <text x="80" y="25" font-weight="bold" fill="#1e293b" font-size="18">Portability</text>
+                                <text x="80" y="45" fill="#64748b" font-size="14">Move to competitor</text>
+                              </g>
+                              
+                               <!-- Right 5 -->
+                              <g transform="translate(175, 160)">
+                                <circle cx="30" cy="30" r="30" fill="#f3f4f6"/>
+                                <text x="30" y="38" text-anchor="middle" font-size="20">🚫</text>
+                                <text x="80" y="25" font-weight="bold" fill="#1e293b" font-size="18">Revocation</text>
+                                <text x="80" y="45" fill="#64748b" font-size="14">Withdraw consent</text>
+                              </g>
+                            </g>
+                          </g>
+
+                          <!-- Footer -->
+                          <rect y="820" width="800" height="60" fill="#f1f5f9"/>
+                          <!-- Subtle right corner text -->
+                          <text x="780" y="860" text-anchor="end" fill="#cbd5e1" font-size="12" style="font-style: italic;">Generated by LGPD AIMaverick App</text>
+                          
+                          <!-- Definitions -->
+                          <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                              <polygon points="0 0, 10 3.5, 0 7" fill="#cbd5e1" />
+                            </marker>
+                          </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div id="content-area" class="space-y-12">
+                <!-- JS Injected -->
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-20 pt-8 border-t border-slate-200 dark:border-slate-800 text-center pb-24">
+                <div class="mb-8">
+                    <p class="text-xs text-slate-400 opacity-75">This content is for educational purposes only. Refer to the official Gazette for legal authority.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FIXED THIN FOOTER (DESIGNER) -->
+    <footer class="fixed bottom-0 left-0 w-full z-50 bg-white/95 dark:bg-darker/95 backdrop-blur-sm border-t border-slate-200 dark:border-slate-800 py-2 px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-slate-500 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <div class="flex items-center gap-1">
+            <span>&copy; 2026</span>
+            <a href="https://www.aimaverick.me" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 hover:underline transition-colors font-medium">
+                @amsubhzd
+            </a>
+        </div>
+        <div class="italic">
+            Designed by <span class="font-semibold text-slate-600 dark:text-slate-400">AIMaverick</span>
+        </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <button id="scroll-top" class="fixed bottom-16 right-6 p-3 rounded-full bg-brazil-blue text-white shadow-lg hover:bg-blue-800 transition-all transform translate-y-20 opacity-0 z-50 ring-2 ring-white dark:ring-slate-800">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <script>
+        // --- DATA CONTENT FROM PDF ---
+        const actData = [
+            {
+                id: "chapter-1",
+                title: "Chapter I: Preliminary Provisions",
+                sections: [
+                    {
+                        id: "art-1",
+                        title: "Article 1. Purpose",
+                        content: `This Law provides on the processing of personal data, including by digital means, by a natural person or legal entity governed by public or private law, for the purpose of protecting the essential rights of freedom and privacy and the free development of the personality of the individuals.`,
+                        simplified: "🛡️ <strong>Goal:</strong> This law exists to protect your personal data, whether online or offline, ensuring your privacy and freedom."
+                    },
+                    {
+                        id: "art-2",
+                        title: "Article 2. Fundamentals",
+                        content: `The grounds of the regulation on personal data protection are the following:
+I- respect for privacy;
+II- informative self-determination;
+III- freedom of expression, information, communication and opinion;
+IV- inviolability of intimacy, honor and reputation;
+V - economic and technological development and innovation;
+VI - free initiative, free competition and consumer protection; and
+VII- human rights, free development of personality, dignity and exercise of citizenship by the individuals.`,
+                        simplified: "The law is built on key values:<br><br>🔐 Respecting your privacy<br>🗣️ Freedom of expression<br>🚀 Encouraging innovation<br>⚖️ Human rights & dignity"
+                    },
+                    {
+                        id: "art-3",
+                        title: "Article 3. Scope",
+                        content: `This Law applies to any processing operation carried out by a natural person or legal entity governed by public or private law, irrespective of the means, of the country in which its headquarter is located or of the country in which the data are located, provided:
+I- the processing operation be carried out in the Brazilian territory;
+II- the purpose of the processing activity be the offer or supply of goods or services or the processing of data of individuals located in the Brazilian territory;
+III- the processed personal data have been collected in the Brazilian territory.`,
+                        simplified: "This law applies if:<br><br>🇧🇷 The data processing happens in Brazil.<br>📦 The processing is done to offer goods/services to people in Brazil.<br>📥 The data was collected in Brazil."
+                    },
+                    {
+                        id: "art-4",
+                        title: "Article 4. Exceptions",
+                        content: `This Law shall not apply to the processing of personal data:
+I - made by a natural person for exclusively private and non-economic purposes;
+II - made exclusively for:
+a) journalistic and artistic purposes; or
+b) academic purposes;
+III - made exclusively for public security, national defense, state safety, or crime investigation activities.`,
+                        simplified: "The law does <strong>NOT</strong> apply to:<br><br>📒 Private, personal use (like your phone contact list).<br>📰 Journalism or Art.<br>🎓 Academic research (usually).<br>👮 National Security, Defense, or Police investigations."
+                    },
+                    {
+                        id: "art-5",
+                        title: "Article 5. Definitions",
+                        content: `For purposes of this Law, the following definitions apply:
+I- <strong>personal data</strong>: information related to an identified or identifiable natural person;
+II- <strong>sensitive personal data</strong>: personal data on racial or ethnic origin, religious belief, public opinion, affiliation to union or religious/philosophical/political organization, data relating to health or sex life, genetic or biometric data;
+VI- <strong>controller</strong>: natural person or legal entity in charge of making decisions about the processing of personal data;
+VII- <strong>processor</strong>: natural person or legal entity which processes personal data in the name of the controller;
+X- <strong>processing</strong>: any operation carried out with personal data (collection, use, storage, transfer, etc.).`,
+                        simplified: "Key Terms:<br><br>👤 <strong>Personal Data:</strong> Anything that identifies you.<br>🧬 <strong>Sensitive Data:</strong> Race, religion, health, genetics, etc.<br>🧠 <strong>Controller:</strong> The boss/company deciding *why* to use data.<br>⚙️ <strong>Processor:</strong> The entity doing the actual work on the data."
+                    },
+                    {
+                        id: "art-6",
+                        title: "Article 6. Principles",
+                        content: `The personal data processing activities shall observe good faith and the following principles:
+I - <strong>Purpose</strong>: legitimate, specific and explicit purposes;
+II - <strong>Adequacy</strong>: compatibility of processing with informed purposes;
+III - <strong>Necessity</strong>: limitation to minimum data required;
+IV - <strong>Free access</strong>: guarantee of consultation for data subjects;
+V - <strong>Quality of data</strong>: accuracy, clarity, relevance;
+VI - <strong>Transparency</strong>: clear information on processing agents;
+VII - <strong>Security</strong>: measures to protect data;
+VIII - <strong>Prevention</strong>: measures to prevent damage;
+IX - <strong>Non-discrimination</strong>: impossibility of processing for discriminatory purposes;
+X - <strong>Accountability</strong>: proof of adoption of effective measures.`,
+                        simplified: "Companies must follow these rules:<br><br>🎯 <strong>Purpose:</strong> Be clear about why they need data.<br>📉 <strong>Necessity:</strong> Only take what is needed.<br>🔓 <strong>Free Access:</strong> Let you check your data.<br>🛡️ <strong>Security:</strong> Keep data safe.<br>🚫 <strong>Non-discrimination:</strong> Don't discriminate."
+                    }
+                ]
+            },
+            {
+                id: "chapter-2",
+                title: "Chapter II: Processing of Personal Data",
+                sections: [
+                    {
+                        id: "art-7",
+                        title: "Article 7. Requirements for Processing",
+                        content: `The personal data can only be processed in the following events:
+I- by means of the data subject's consent;
+II - for compliance with a statutory or regulatory obligation by the controller;
+III - by the public administration, for public policies;
+V - for the performance of agreements/contracts;
+VI - for the regular exercise of rights in lawsuits or arbitration;
+IX - whenever necessary to serve the <strong>legitimate interests</strong> of the controller or of third parties, except in the event of prevalence of fundamental rights and liberties of the data subject.`,
+                        simplified: "Companies can only use your data if:<br><br>👍 <strong>Consent:</strong> You explicitly agree.<br>⚖️ <strong>Law:</strong> They legally have to.<br>📝 <strong>Contract:</strong> It's for a service you signed up for.<br>💼 <strong>Legitimate Interest:</strong> A valid business need that doesn't hurt your rights."
+                    },
+                    {
+                        id: "art-8",
+                        title: "Article 8. Consent",
+                        content: `The consent must be provided in writing or by other means that proves the manifestation of will of the data subject.
+Paragraph 4: The consent shall refer to defined purposes, and generic authorizations for the processing of personal data shall be null.
+Paragraph 5: The consent may be revoked at any time upon express pronouncement of the data subject, by a free and facilitated procedure.`,
+                        simplified: "Consent rules:<br><br>🗣️ <strong>Clear:</strong> No generic 'we take everything' clauses.<br>✍️ <strong>Written/Provable:</strong> They need proof you said yes.<br>↩️ <strong>Revocable:</strong> You can cancel it anytime easily."
+                    },
+                    {
+                        id: "art-11",
+                        title: "Article 11. Sensitive Personal Data",
+                        content: `Sensitive personal data can only be processed:
+I- whenever the data subjects specifically and emphatically consent to such processing, for specific purposes;
+II- without consent, whenever essential for:
+a) statutory obligation;
+b) public policies;
+d) exercise of rights in lawsuits;
+e) protection of life or physical safety;
+f) protection of health;
+g) prevention of fraud and security of the data subject.`,
+                        simplified: "Sensitive data (health, race, bio) is stricter:<br><br>🔒 <strong>Specific Consent:</strong> Usually required.<br>🚨 <strong>Exceptions:</strong> Can be used without consent <em>only</em> for emergencies, fraud prevention, or legal duties."
+                    },
+                    {
+                        id: "art-14",
+                        title: "Article 14. Children and Adolescents",
+                        content: `The processing of personal data of children and adolescents shall be carried out to their best interest.
+Paragraph 1: The processing of personal data of children shall be carried out with the specific and separate consent of at least one of the parents or by the legal guardian.
+Paragraph 3: Data may be collected without consent strictly to contact parents/guardians, used a single time and without storage.`,
+                        simplified: "Kids' Data:<br><br>👶 <strong>Best Interest:</strong> Must help, not harm, the child.<br>👪 <strong>Parental Consent:</strong> Mandatory specific permission.<br>💾 <strong>No Storage:</strong> Cannot be kept without that permission."
+                    }
+                ]
+            },
+            {
+                id: "chapter-3",
+                title: "Chapter III: Rights of the Data Subject",
+                sections: [
+                    {
+                        id: "art-18",
+                        title: "Article 18. Rights",
+                        content: `The data subjects are entitled to obtain from the controller, at any time and upon request:
+I- confirmation of the existence of processing;
+II- access to the data;
+III- correction of incomplete, inaccurate or outdated data;
+IV- anonymization, blocking or elimination of unnecessary or excessive data;
+V- portability of the data to other service providers;
+VI- elimination of the personal data processed with consent;
+VII- information of public and private entities with which the controller shared data;
+IX- revocation of the consent.`,
+                        simplified: "Your Power List:<br><br>❓ <strong>Confirm:</strong> Ask if they have your data.<br>👀 <strong>Access:</strong> See the data.<br>✏️ <strong>Correct:</strong> Fix wrong info.<br>🗑️ <strong>Delete:</strong> Remove unnecessary data.<br>📲 <strong>Portability:</strong> Move data to another company.<br>🚫 <strong>Revoke:</strong> Cancel your consent."
+                    },
+                    {
+                        id: "art-19",
+                        title: "Article 19. Access",
+                        content: `Confirmation of existence or access to personal data shall be provided:
+I- immediately, in simplified form; or
+II- by means of a clear and complete statement provided within up to 15 days from the date of request.`,
+                        simplified: "When you ask for your data, they must reply either:<br><br>⚡ <strong>Immediately</strong> (simplified format)<br>📅 <strong>Within 15 days</strong> (full detailed report)"
+                    }
+                ]
+            },
+            {
+                id: "chapter-7",
+                title: "Chapter VII: Security & Good Practices",
+                sections: [
+                    {
+                        id: "art-46",
+                        title: "Article 46. Security Measures",
+                        content: `The processing agents shall adopt security, technical and administrative measures that are capable of protecting the personal data from unauthorized accesses and accidental or unlawful situations of destruction, loss, modification, communication or any form of inappropriate or unlawful processing.`,
+                        simplified: "🛡️ Companies must use proper tech (firewalls, encryption) and rules to stop hackers or leaks."
+                    },
+                    {
+                        id: "art-48",
+                        title: "Article 48. Security Incidents",
+                        content: `The controller shall notify the supervisory authority and the data subject of the occurrence of any security incident that may result in any relevant risk or damage to the data subjects.
+Paragraph 1: Such notice shall be delivered within a reasonable term and contain: nature of data, technical measures used, risks, and measures to reverse/mitigate effects.`,
+                        simplified: "📢 If there is a data leak that risks your rights, the company must tell the Authority (ANPD) and <strong>YOU</strong>."
+                    }
+                ]
+            },
+            {
+                id: "chapter-8",
+                title: "Chapter VIII: Administrative Sanctions",
+                sections: [
+                    {
+                        id: "art-52",
+                        title: "Article 52. Sanctions",
+                        content: `The data processing agents, in connection with infractions of this Law, shall be subject to the following administrative penalties:
+I- warning;
+II- simple fine of up to 2% of the sales revenue of the legal entity, limited, in the aggregate, to R$ 50,000,000.00 (fifty million Reais) per infraction;
+IV- disclosure of the infraction;
+V- blockage of the personal data;
+VI- elimination of the personal data;
+X- suspension of the partial or total operation of the database.`,
+                        simplified: "Punishments for breaking the law:<br><br>⚠️ <strong>Warnings</strong><br>💰 <strong>Fines:</strong> Up to 2% of revenue (Max R$ 50 Million).<br>📢 <strong>Public Shaming:</strong> Disclosure of the infraction.<br>🛑 <strong>Blocking/Deleting:</strong> Forced removal of data."
+                    }
+                ]
+            },
+            {
+                id: "chapter-9",
+                title: "Chapter IX: National Authority (ANPD)",
+                sections: [
+                    {
+                        id: "art-55",
+                        title: "Article 55. The ANPD",
+                        content: `The National Supervisory Authority (ANPD) is hereby created... to guarantee the protection of personal data, inspect and impose penalties, and promote knowledge on the norms and public policies on personal data protection.`,
+                        simplified: "🏛️ <strong>ANPD:</strong> The government body created to police this law, fine companies, and help citizens."
+                    }
+                ]
+            }
+        ];
+
+        // --- DOM ELEMENTS ---
+        const tocContainer = document.getElementById('toc-container');
+        const contentArea = document.getElementById('content-area');
+        const searchInput = document.getElementById('search-input');
+        const searchInputMobile = document.getElementById('search-input-mobile');
+        const themeToggle = document.getElementById('theme-toggle');
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const scrollTopBtn = document.getElementById('scroll-top');
+        const btnOfficial = document.getElementById('btn-official');
+        const btnSimplified = document.getElementById('btn-simplified');
+        const infographic = document.getElementById('lgpd-infographic');
+
+        // --- STATE & UTILS ---
+        let isDark = localStorage.getItem('theme') === 'dark';
+        let isSimplified = true; 
+        
+        let expandedChapters = new Set(actData.map(item => item.id));
+
+        function highlightText(text, filter) {
+            if (!filter) return text;
+            const regex = new RegExp(`(${filter})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function applyTheme() {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function updateToggleUI() {
+            if (isSimplified) {
+                btnSimplified.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-brazil-green dark:text-green-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600';
+                btnOfficial.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800';
+                
+                // Show Infographic
+                if (infographic) infographic.classList.remove('hidden');
+            } else {
+                btnOfficial.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold rounded-md transition-all bg-white dark:bg-slate-700 text-brazil-blue dark:text-blue-400 shadow-sm ring-1 ring-slate-200 dark:ring-slate-600';
+                btnSimplified.className = 'px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-medium rounded-md transition-all text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800';
+                
+                // Hide Infographic
+                if (infographic) infographic.classList.add('hidden');
+            }
+        }
+
+        function renderContent(filterText = '') {
+            contentArea.innerHTML = '';
+            tocContainer.innerHTML = '';
+
+            const lowerFilter = filterText.toLowerCase();
+            const isSearching = lowerFilter.length > 0;
+
+            // Hide infographic if searching, unless field is empty
+            if (infographic) {
+                if (isSearching) {
+                     infographic.classList.add('hidden');
+                } else if (isSimplified) {
+                     infographic.classList.remove('hidden');
+                }
+            }
+
+            actData.forEach(chapter => {
+                const matchingSections = chapter.sections.filter(sec => 
+                    sec.title.toLowerCase().includes(lowerFilter) || 
+                    sec.content.toLowerCase().includes(lowerFilter) ||
+                    (sec.simplified && sec.simplified.toLowerCase().includes(lowerFilter))
+                );
+
+                if (matchingSections.length > 0) {
+                    // Chapter Header
+                    const chapterEl = document.createElement('div');
+                    chapterEl.id = chapter.id;
+                    chapterEl.className = 'chapter-header border-b border-slate-200 dark:border-slate-700 pb-8';
+                    chapterEl.innerHTML = `
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2 official-font tracking-tight group cursor-pointer">
+                            <span class="bg-slate-100 dark:bg-slate-800 p-1 rounded text-base text-slate-500">§</span>
+                            ${highlightText(chapter.title, lowerFilter)}
+                            <a href="#${chapter.id}" class="anchor-link"><i data-lucide="link" class="w-4 h-4"></i></a>
+                        </h2>
+                        <div class="space-y-6"></div>
+                    `;
+                    const sectionsContainer = chapterEl.querySelector('.space-y-6');
+
+                    // Sections
+                    matchingSections.forEach(section => {
+                        const secEl = document.createElement('article');
+                        secEl.id = section.id;
+                        secEl.className = 'group scroll-mt-32 p-6 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-black/50 transition-all duration-300 relative overflow-hidden';
+                        
+                        const stripColor = isSimplified ? 'bg-brazil-green' : 'bg-slate-200 dark:bg-slate-700 group-hover:bg-brazil-blue';
+                        const strip = document.createElement('div');
+                        strip.className = `absolute top-0 left-0 w-1 h-full ${stripColor} transition-colors`;
+                        secEl.appendChild(strip);
+
+                        let rawContent = isSimplified ? (section.simplified || section.content) : section.content;
+                        if (isSimplified && !section.simplified) {
+                            rawContent = "<i>(No simplified summary available. Official text:)</i><br><br>" + rawContent;
+                        }
+
+                        const processedContent = rawContent.replace(/\n/g, '<br>');
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.innerHTML = `
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 group-hover:text-brazil-blue dark:group-hover:text-blue-400 transition-colors official-font flex items-center">
+                                    ${highlightText(section.title, lowerFilter)}
+                                    <a href="#${section.id}" class="anchor-link"><i data-lucide="link" class="w-4 h-4"></i></a>
+                                </h3>
+                                ${isSimplified && section.simplified ? '<span class="text-[10px] uppercase tracking-wider font-bold text-green-700 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded">Simplified</span>' : ''}
+                            </div>
+                            <div class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base pl-2 ${isSimplified ? 'font-medium' : ''}">
+                                ${highlightText(processedContent, lowerFilter)}
+                            </div>
+                        `;
+                        secEl.appendChild(contentDiv);
+                        sectionsContainer.appendChild(secEl);
+                    });
+
+                    contentArea.appendChild(chapterEl);
+
+                    // TOC Item
+                    const tocChapter = document.createElement('div');
+                    tocChapter.className = 'mb-1';
+
+                    const isExpanded = isSearching || expandedChapters.has(chapter.id);
+
+                    const headerBtn = document.createElement('button');
+                    headerBtn.className = 'w-full flex items-center justify-between px-2 py-2 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors text-left official-font group select-none';
+                    headerBtn.onclick = () => toggleChapter(chapter.id);
+                    
+                    headerBtn.innerHTML = `
+                        <span class="truncate pr-2">${chapter.title}</span>
+                        <svg class="chevron w-4 h-4 text-slate-400 transition-transform duration-200 ${isExpanded ? '' : 'collapsed'}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    `;
+                    tocChapter.appendChild(headerBtn);
+                    
+                    const tocSectionList = document.createElement('div');
+                    tocSectionList.id = `toc-list-${chapter.id}`;
+                    tocSectionList.className = `chapter-content ml-2 border-l-2 border-slate-200 dark:border-slate-700 pl-1 ${isExpanded ? '' : 'collapsed'}`;
+                    
+                    const linksWrapper = document.createElement('div');
+                    linksWrapper.className = 'space-y-0.5 py-1';
+
+                    matchingSections.forEach(section => {
+                        const link = document.createElement('a');
+                        link.href = `#${section.id}`;
+                        link.dataset.target = section.id;
+                        link.className = 'toc-link block px-4 py-1.5 text-xs text-slate-600 dark:text-slate-400 hover:text-brazil-blue dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-r-sm transition-colors truncate border-l-2 border-transparent hover:border-brazil-blue';
+                        link.textContent = section.title;
+                        
+                        link.onclick = (e) => {
+                            e.preventDefault();
+                            const target = document.getElementById(section.id);
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                                history.pushState(null, null, `#${section.id}`);
+                            }
+                            closeMobileMenu();
+                        };
+                        linksWrapper.appendChild(link);
+                    });
+                    
+                    tocSectionList.appendChild(linksWrapper);
+                    tocChapter.appendChild(tocSectionList);
+                    tocContainer.appendChild(tocChapter);
+                }
+            });
+
+            if (contentArea.innerHTML === '') {
+                contentArea.innerHTML = `
+                    <div class="text-center py-20 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+                        <i data-lucide="search-x" class="w-16 h-16 text-slate-300 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-700 dark:text-slate-300 official-font">No results found</h3>
+                        <p class="text-slate-500 text-sm mt-2">Try adjusting your search terms.</p>
+                    </div>
+                `;
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            setupIntersectionObserver();
+        }
+
+        function toggleChapter(id) {
+            if (expandedChapters.has(id)) {
+                expandedChapters.delete(id);
+            } else {
+                expandedChapters.add(id);
+            }
+            const list = document.getElementById(`toc-list-${id}`);
+            const btn = list.previousElementSibling;
+            const chevron = btn.querySelector('.chevron');
+            if (expandedChapters.has(id)) {
+                list.classList.remove('collapsed');
+                chevron.classList.remove('collapsed');
+            } else {
+                list.classList.add('collapsed');
+                chevron.classList.add('collapsed');
+            }
+        }
+
+        // --- EVENTS ---
+        searchInput.addEventListener('input', (e) => renderContent(e.target.value));
+        searchInputMobile.addEventListener('input', (e) => renderContent(e.target.value));
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            applyTheme();
+        });
+
+        btnOfficial.addEventListener('click', () => {
+            if (isSimplified) {
+                isSimplified = false;
+                updateToggleUI();
+                renderContent(searchInput.value || searchInputMobile.value);
+            }
+        });
+
+        btnSimplified.addEventListener('click', () => {
+            if (!isSimplified) {
+                isSimplified = true;
+                updateToggleUI();
+                renderContent(searchInput.value || searchInputMobile.value);
+            }
+        });
+
+        function openMobileMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            setTimeout(() => sidebarOverlay.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('opacity-0');
+            setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMobileMenu);
+        sidebarOverlay.addEventListener('click', closeMobileMenu);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) scrollTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            else scrollTopBtn.classList.add('translate-y-20', 'opacity-0');
+        });
+        
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        document.querySelectorAll('.toc-link').forEach(link => {
+                            link.classList.remove('text-brazil-blue', 'font-bold', 'bg-slate-100', 'dark:bg-slate-800', 'border-brazil-blue', 'dark:text-blue-400');
+                            link.classList.add('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+                        });
+                        const activeLink = document.querySelector(`.toc-link[data-target="${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.remove('text-slate-600', 'dark:text-slate-400', 'border-transparent');
+                            activeLink.classList.add('text-brazil-blue', 'font-bold', 'bg-slate-100', 'dark:bg-slate-800', 'border-brazil-blue', 'dark:text-blue-400');
+                        }
+                    }
+                });
+            }, { rootMargin: '-100px 0px -70% 0px' });
+            document.querySelectorAll('article, .chapter-header').forEach(section => observer.observe(section));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTheme();
+            updateToggleUI();
+            renderContent();
+            if(window.location.hash) {
+                const id = window.location.hash.substring(1);
+                const element = document.getElementById(id);
+                if(element) setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 500);
+            }
+        });
+        
+        window.addEventListener('load', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+    </script>
+
+    <script>window.va=window.va||function(){(window.va.q=window.va.q||[]).push(arguments)};</script><script src="/_vercel/insights/script.js"></script>
+	<script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script><script src="/_vercel/speed-insights/script.js"></script>	
+    
+</body>
+</html>
